@@ -1,0 +1,71 @@
+/* styles.css */
+@import 'reset.css';
+@import 'dropdown-styles.css';
+
+:root {
+  --dd-font-size: 1rem;
+  --hover-background: #444;
+  --dd-width: 200px;
+  --ddhover-color:#444;
+
+}
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.togglemenubutton {
+  background-color: rgb(36, 93, 198);
+  color: white;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 25px;
+  border: none;
+  margin: 1rem;
+}
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+.ddmenu.hidden {
+  display: none;
+}
+.ddmenu button {
+  width: var(--dd-width);
+  font-size: var(--dd-font-size);
+  display: flex;
+  align-items: center;
+  background-color: rgb(91, 91, 91);
+  color: white;
+  padding: .5rem;
+  gap: .5rem;
+  border: none;
+}
+
+.ddmenu a {
+  display: block;
+  box-sizing: border-box;
+  min-width: var(--dd-width);
+  color: white;
+  padding: 1rem;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ddmenu .menucontent {
+  display: none;
+  position: absolute;
+  background-color: rgb(91, 91, 91);
+}
+
+.ddmenu:hover .menucontent {
+  display:block;
+}
+
+.ddmenu a:hover,
+.ddmenu button:hover {
+  background-color: var(--ddhover-color);
+}

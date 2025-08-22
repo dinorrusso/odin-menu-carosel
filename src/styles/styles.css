@@ -2,6 +2,13 @@
 @import 'reset.css';
 @import 'dropdown-styles.css';
 
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --dd-font-size: 1rem;
   --hover-background: #444;
@@ -12,18 +19,37 @@
 html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
+h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: .5rem;
+}
+.dropdowns {
+  width: 50%;
+  margin: 0 auto;
+  background-color:rgba(160, 137, 99, 1);
+  padding: 2rem;
+}
+.carousels {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #C9B194 ;
+  padding: 2rem;
+}
 .togglemenubutton {
-  background-color: rgb(36, 93, 198);
-  color: white;
+  background-color: rgba(219, 219, 219, 1);
+  color: black;
   padding: 1rem;
   font-size: 1rem;
   font-weight: 500;
   border-radius: 25px;
   border: none;
   margin: 1rem;
+  cursor: pointer;
 }
-
+.togglemenubutton:hover {
+  background-color: rgba(219, 219, 219, 0.5);
+}
 .menu-container {
   display: flex;
   flex-wrap: wrap;
@@ -37,7 +63,7 @@ html {
   font-size: var(--dd-font-size);
   display: flex;
   align-items: center;
-  background-color: rgb(91, 91, 91);
+  background-color: rgba(219, 219, 219, 1);
   color: white;
   padding: .5rem;
   gap: .5rem;
@@ -69,3 +95,94 @@ html {
 .ddmenu button:hover {
   background-color: var(--ddhover-color);
 }
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 80%;
+  height: 50vh;
+  background-color: rgba(160, 137, 99, 1);
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  align-items: center;
+}
+.carousel-card {
+  background-color: azure;
+  width: 75%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  border:3px solid #A08963;
+  display: none;
+  
+}
+.carousel-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center top;
+}
+.carousel-card-selected {
+  background-color: azure;
+  width: 75%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  border:3px solid #A08963;
+}
+.button-left {
+  position: absolute;
+  left: 1rem;;
+  top: 45%;
+  cursor: pointer;
+  background-color: rgba(219, 219, 219, 1);
+  border: none;
+  padding: .5rem;
+  border-radius: 50%;
+}
+.button-right {
+  position: absolute;
+  right: 1rem;
+  top: 45%;
+  cursor: pointer;
+  background-color: rgba(219, 219, 219, 1);
+  border: none;
+  padding: .5rem;
+  border-radius: 50%;
+}
+.button-left:hover,
+.button-right:hover{
+  background-color: rgba(219, 219, 219, 0.5);
+}
+.carousel-position-indicators {
+  display: flex;
+  gap: 2rem;
+}
+.carousel-position-indicators {
+  display: flex;
+  gap: 2rem;
+}
+
+input[type="radio"] {
+ appearance: none;
+ width: 10px;
+ height: 10px;
+ border-radius: 50%;
+ outline: none;
+ background:rgba(219, 219, 219, 1);
+ cursor: pointer;
+}
+input[type="radio"]:checked {
+ appearance: none;
+ width: 10px;
+ height: 10px;
+ border-radius: 50%;
+ outline:none; 
+ background:rgba(0,0,0,0.5);
+ cursor: pointer;
+}
+

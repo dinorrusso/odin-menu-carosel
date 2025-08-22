@@ -20,7 +20,6 @@ const dd1 = new DropDownMenu({
   ]
 
 });
-//document.body.appendChild(dd1.element);
 
 menuContainer.appendChild(dd1.element);
 
@@ -36,7 +35,10 @@ const dd2 = new DropDownMenu({
 //document.body.appendChild(dd2.element);
 menuContainer.appendChild(dd2.element);
 }
+//this instantiates and tests teh component
 testDropDownComponent();
+//this is the event listener for the css dropdown 
+//as per the exercise
 const toggleButton = document.querySelector('.togglemenubutton');
 toggleButton.addEventListener('click', () => {
   const ddMenu = document.getElementById('ddmenu1');
@@ -46,108 +48,81 @@ toggleButton.addEventListener('click', () => {
     ddMenu.classList.add('hidden');
   }
 });
-/*
-const dropDownMenu = document.querySelector(".drop-down");
-const dropDownMenuButton = document.querySelector(".dropdown-menu-button");
+//////////////////////////////////////////////////////////
+// code for the carousel
+//
+const carouselConstainer = document.querySelector(".carousel-container");
+const carouselCards = document.querySelectorAll(".carousel-card");
+const carouselPreviousButton = document.querySelector(".button-left");
+const carouselNextButton = document.querySelector(".button-right");
+const carouselPositionIndicators = document.querySelector(".carousel-position-indicators");
+let currentSelectionIndex = 0;
 
-//sow the dropdown when the mouse hovers over the button
-dropDownMenuButton.addEventListener("mouseenter", () => {
-        console.log('dropDownMenuButton mouseenter');
-        // make it visible CSS
-        dropDownMenu.className = "drop-down";
-      });
-//respond to a dropdown option being clicked
-dropDownMenu.addEventListener("click", (event) => {
-        // make it invisible CSS
-        dropDownMenu.classList.add("hidden");
-        //if an option was clicked
-        if (event.target.tagName === 'LI') {
-          const selectedValue = event.target.getAttribute('data-value');
-          console.log('selectedValue = ', selectedValue);
-          const selectedText = event.target.textContent;
-          console.log('selectedText = ', selectedText);
-        }
-      });
-dropDownMenu.addEventListener("mouseleave", (event) => {
-        // make it invisible CSS
-        dropDownMenu.classList.add('hidden');
-      });
-*/
+//generate the position indicators based on number of carousel-cards
+carouselCards.forEach((card, index) => {
+  const html = `
+    <label>
+      <input 
+        class="position-indicator" 
+        type="radio" 
+        name="carousel-card" 
+        value="${index + 1}" 
+        title="Go to card ${index + 1}">
+      <span></span>
+    </label>
+  `;
+  //add the html to the doc
+  carouselPositionIndicators.insertAdjacentHTML('beforeend', html);
+});
 
-/*
-function createDropDownMenu(options){
-  const template = document.createElement("template");
-  
-  //capture the icon text for the template
-  let iconHTML = ""
-  if (options.icon) {
-    iconHTML = `<span class="material-symbols-outlined">${options.icon}</span>`;
-  }
-  //capture the menu items text for the template
-  let menuItemsHTML = '';
-  if (options.menuItems && options.menuItems.length > 0) {
-      menuItemsHTML = options.menuItems.map(item =>
-      `<li data-value="${item.value}">${item.label}</li>`
-    ).join('');
-  }
-  
-
-  //here's the rest of the template
-  const templateHTML = `
-  <div class = "dropdown-component">
-    <button class = "dropdown-menu-button" id="ddmb2" type="button">
-      ${iconHTML}
-      <span class="button-label">${options.label}</span>
-    </button>
-    <ul class="drop-down hidden">
-      ${menuItemsHTML}
-    </ul>
-  </div>
-  `
-
-   // Create a temporary container
-  const tempContainer = document.createElement('div');
-
-  // Set the HTML string inside
-  tempContainer.innerHTML = templateHTML;
-
-  const dropDownMenu = tempContainer.firstElementChild;
-  if (options.onMouseenter){
-    dropDownMenu.addEventListener("mouseenter", options.onMouseenter);
-
-  }
-  if (options.onMouseleave){
-    dropDownMenu.addEventListener("mouseleave", options.onMouseleave);
-
-  }
-
-  return dropDownMenu;
+//add logic for the position indicators
+function unselectAll(){
+  //unselect all
+    carouselCards.forEach((card) => {
+      card.classList.remove("carousel-card-selected");
+    });
+    positionIndicators.forEach((indicator) => {
+      indicator.checked = false;
+    });
 }
-
-const myDD = createDropDownMenu({
-  label: "My Test Menu",
-  icon: "menu",
-  menuItems: [
-                { value: 'option1', label: '1' },
-                { value: 'option2', label: '2' },
-                { value: 'option3', label: '3' },
-              ],
-  onMouseenter: (ev) => {
-    const dropdownDiv = ev.target;
-    console.log('you entered...', dropdownDiv);
-    const dropdownUl = dropdownDiv.querySelector('ul');
-    console.log('dropdownUl:', dropdownUl);
-    dropdownUl.className = "drop-down";
-  },
-  onMouseleave: (ev) => {
-    const dropdownDiv = ev.target;
-    console.log('you left...', dropdownDiv);
-    const dropdownUl = dropdownDiv.querySelector('ul');
-    console.log('dropdownUl:', dropdownUl);
-    dropdownUl.classList.add("hidden");
-    console.log('dropdownUl:', dropdownUl);
-  }
+function select(atIndex){
+    carouselCards[atIndex].classList.add("carousel-card-selected");
+    positionIndicators[atIndex].checked = true;
+    currentSelectionIndex = atIndex;
+}
+const positionIndicators = document.querySelectorAll(".position-indicator");
+positionIndicators.forEach((indicator, index) => {
+  indicator.addEventListener("click", () => {
+    //unselect all
+   unselectAll();
+    //select the card and the indicator
+    select(index);
   });
-console.log('myDD=', myDD);
-document.body.appendChild(myDD);
-*/
+});
+// add the logic for the previous and next buttons
+carouselPreviousButton.addEventListener("click", () => {
+  unselectAll();
+  const min = 0;
+  const max = carouselCards.length-1;
+  if(currentSelectionIndex === min){
+    currentSelectionIndex = max;
+  } else{
+    currentSelectionIndex -= 1;
+  }
+  select(currentSelectionIndex)
+});
+carouselNextButton.addEventListener("click", () => {
+  unselectAll();
+  const min = 0;  
+  const max = carouselCards.length-1;
+  if(currentSelectionIndex === max){
+    currentSelectionIndex = min;
+  } else{
+    currentSelectionIndex += 1;
+  }
+  select(currentSelectionIndex);
+});
+
+//select the first item on page load
+carouselCards[currentSelectionIndex].classList.add("carousel-card-selected");
+positionIndicators[currentSelectionIndex].classList.add("position-indicator-selected");

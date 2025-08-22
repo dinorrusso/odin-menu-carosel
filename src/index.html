@@ -10,24 +10,66 @@
     rel="stylesheet" />
 </head>
 <body>
-  <button class="togglemenubutton">Toggle CSS Menu Visibility</button>
-  <div class="menu-container">
-    <div class="ddmenu hidden" id="ddmenu1">
-        <button class="button">
-          <span class="material-symbols-outlined menubuttonicon">menu</span>
-          <span class="button-label">CSS Menu</span>
-        </button>
-        <div class="menucontent">
-          <a href="">Option 1</a>
-          <a href="">Option 2</a>
-          <a href="">Option 3</a>
-        </div>  
+  <section class="dropdowns" aria-label="Dropdowns Demo">
+    <h1>This is the section demo-ing dropdown menus; the black menus are component based where the options are passed in as a parameter. The CSS menu options are hard-coded in HTML as per the exercise instructions.</h1>
+    <button class="togglemenubutton">Toggle CSS Menu Visibility</button>
+    <div class="menu-container">
+      <div class="ddmenu hidden" id="ddmenu1">
+          <button class="button">
+            <span class="material-symbols-outlined menubuttonicon">menu</span>
+            <span class="button-label">CSS Menu</span>
+          </button>
+          <div class="menucontent">
+            <a href="">Option 1</a>
+            <a href="">Option 2</a>
+            <a href="">Option 3</a>
+          </div>  
+      </div>
+    </div>
+    
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum tempora commodi, sunt voluptatem blanditiis doloribus perspiciatis harum laudantium aspernatur eius quasi perferendis excepturi sint aliquid.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas dignissimos delectus itaque praesentium nulla fugit, sint nisi, dolorum commodi officiis eos laudantium neque velit. Fuga nam dolorum distinctio facere vel!</p>
+</section>
+<section class="carousels" aria-label="Carousel Demo">
+  <br>
+  <h1>This is the section demo-ing a Carousel</h1>
+  <div class="carousel-container">
+    <div class="carousel-card carousel-card-selected"><img src="/images/boris-smokrovic-DPXytK8Z59Y-unsplash.jpg" alt="bird image" />
+  </div>
+    <div class="carousel-card"><img src="/images/boris-smokrovic-RLLR0oRz16Y-unsplash.jpg" alt="bird image" /></div>
+    <div class="carousel-card"><img src="/images/chris-smith-ZeIFgSO3MAU-unsplash.jpg" alt="bird image" /></div>
+    <div class="carousel-card"><img src="/images/sid-balachandran-hXttDVCwyRA-unsplash.jpg" alt="bird image" /></div>
+    <div class="carousel-arrows">
+      <button class="button-left" type="button" title="Previous">
+        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+        <span class="visually-hidden"></span>
+      </button>
+      <button class="button-right" type="button" title="Next">
+        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+        <span class="visually-hidden"></span>
+      </button>
+    </div>
+    <div class="carousel-position-indicators">
+      <!-- to be generated via javascript  e.g., -->
+       <!-- <label>
+         <input class="position-indicator" type="radio" name="carousel-card" value="0" title="Go to card 1">
+         <span></span>
+       </label>
+       <label>
+         <input class="position-indicator" type="radio" name="carousel-card" value="1" title="Go to card 2">
+         <span></span>
+       </label>
+       <label>
+         <input class="position-indicator" type="radio" name="carousel-card" value="2" title="Go to card 3">
+         <span></span>
+       </label>
+       <label>
+         <input class="position-indicator" type="radio" name="carousel-card" value="3" title="Go to card 4">
+         <span></span>
+       </label> -->
     </div>
   </div>
-  
-
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum tempora commodi, sunt voluptatem blanditiis doloribus perspiciatis harum laudantium aspernatur eius quasi perferendis excepturi sint aliquid.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas dignissimos delectus itaque praesentium nulla fugit, sint nisi, dolorum commodi officiis eos laudantium neque velit. Fuga nam dolorum distinctio facere vel!</p>
-
+</section>
   
 </body>
 </html>
